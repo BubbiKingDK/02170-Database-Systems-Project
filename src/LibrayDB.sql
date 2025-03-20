@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS Attends;
 DROP TABLE IF EXISTS Activity;
-DROP TABLE IF EXISTS Borrow;
+DROP TABLE IF EXISTS Borrows;
 DROP TABLE IF EXISTS Book;
 DROP TABLE IF EXISTS Bookshelf;
 DROP TABLE IF EXISTS LibraryUser;
@@ -22,7 +22,7 @@ CREATE TABLE Book (
     genre VARCHAR(255),
     bookshelf_id INT,
     title VARCHAR(255),
-    author_id VARCHAR(255),
+    author VARCHAR(255),
     FOREIGN KEY (genre) REFERENCES Section(genre),
     FOREIGN KEY (bookshelf_id) REFERENCES Bookshelf(bookshelf_id)
 );
@@ -33,11 +33,11 @@ CREATE TABLE LibraryUser (
     date_of_birth DATE
 );
 
-CREATE TABLE Borrow (
+CREATE TABLE Borrows (
     user_id binary(16),
     book_serial_number binary(16),
     PRIMARY KEY (book_serial_number),
-    status VARCHAR(8) CHECK (status IN ('Overdue', 'Borrowed')),
+    borrow_status ENUM('overdue','borrowed'),
     FOREIGN KEY (user_id) REFERENCES LibraryUser(user_id),
     FOREIGN KEY (book_serial_number) REFERENCES Book(book_serial_number)
 );
