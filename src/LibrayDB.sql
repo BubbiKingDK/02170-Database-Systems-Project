@@ -1,10 +1,8 @@
 DROP TABLE IF EXISTS Attends;
 DROP TABLE IF EXISTS Activity;
 DROP TABLE IF EXISTS Borrow;
-DROP TABLE IF EXISTS BookshelfSectionRelationship;
-DROP TABLE IF EXISTS BookLocation;
-DROP TABLE IF EXISTS Bookshelf;
 DROP TABLE IF EXISTS Book;
+DROP TABLE IF EXISTS Bookshelf;
 DROP TABLE IF EXISTS LibraryUser;
 DROP TABLE IF EXISTS Section;
 
@@ -13,30 +11,19 @@ CREATE TABLE Section (
 );
 
 CREATE TABLE Bookshelf (
-    bookshelf_id INT PRIMARY KEY
-);
-
-CREATE TABLE BookshelfSectionRelationship (
-    genre VARCHAR(255),
     bookshelf_id INT,
-    PRIMARY KEY (genre, bookshelf_id),
-    FOREIGN KEY (genre) REFERENCES Section(genre),
-    FOREIGN KEY (bookshelf_id) REFERENCES Bookshelf(bookshelf_id)
-);
-
-CREATE TABLE Book (
-    book_serial_number BINARY(16) DEFAULT (uuid()) NOT NULL PRIMARY KEY,  
-    genre VARCHAR(255),
-    title VARCHAR(255),
-    author_id VARCHAR(255),
+    genre VARCHAR(255) NOT NULL,
+	PRIMARY KEY (bookshelf_id, genre),
     FOREIGN KEY (genre) REFERENCES Section(genre)
 );
 
-CREATE TABLE BookLocation (
-    book_serial_number binary(16),
+CREATE TABLE Book (
+    book_serial_number BINARY(16) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
+    genre VARCHAR(255),
     bookshelf_id INT,
-    PRIMARY KEY (book_serial_number, bookshelf_id),
-    FOREIGN KEY (book_serial_number) REFERENCES Book(book_serial_number),
+    title VARCHAR(255),
+    author_id VARCHAR(255),
+    FOREIGN KEY (genre) REFERENCES Section(genre),
     FOREIGN KEY (bookshelf_id) REFERENCES Bookshelf(bookshelf_id)
 );
 
@@ -56,8 +43,8 @@ CREATE TABLE Borrow (
 );
 
 CREATE TABLE Activity (
-    event_id BINARY(16) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
-    genre VARCHAR(255),
+    activity_id BINARY(16) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
+    genre VARCHAR(255) NOT NULL,
     event_name VARCHAR(255),
     event_date DATE,
     start_time DATE,
@@ -65,8 +52,9 @@ CREATE TABLE Activity (
 );
 
 CREATE TABLE Attends (
-    event_id binary(16),
+    activity_id binary(16),
     user_id binary(16),
-    FOREIGN KEY (event_id) REFERENCES Activity(event_id),
+    PRIMARY KEY (activity_id, user_id),
+    FOREIGN KEY (activity_id) REFERENCES Activity(activity_id),
     FOREIGN KEY (user_id) REFERENCES LibraryUser(user_id)
 );
