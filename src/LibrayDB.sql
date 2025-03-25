@@ -18,7 +18,7 @@ CREATE TABLE Bookshelf (
 );
 
 CREATE TABLE Book (
-    book_serial_number BINARY(16) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
+    book_serial_number CHAR(36) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
     genre VARCHAR(255),
     bookshelf_id INT,
     title VARCHAR(255),
@@ -28,14 +28,14 @@ CREATE TABLE Book (
 );
 
 CREATE TABLE LibraryUser (
-    user_id BINARY(16) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
+    user_id char(36) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
     user_name VARCHAR(255),
     date_of_birth DATE
 );
 
 CREATE TABLE Borrows (
-    user_id binary(16),
-    book_serial_number binary(16),
+    user_id char(36),
+    book_serial_number CHAR(36),
     PRIMARY KEY (book_serial_number),
     borrow_status ENUM('overdue','borrowed'),
     FOREIGN KEY (user_id) REFERENCES LibraryUser(user_id),
@@ -43,7 +43,7 @@ CREATE TABLE Borrows (
 );
 
 CREATE TABLE Activity (
-    activity_id BINARY(16) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
+    activity_id CHAR(36) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
     genre VARCHAR(255) NOT NULL,
     event_name VARCHAR(255),
     event_date DATE,
@@ -52,8 +52,8 @@ CREATE TABLE Activity (
 );
 
 CREATE TABLE Attends (
-    activity_id binary(16),
-    user_id binary(16),
+    activity_id CHAR(36),
+    user_id CHAR(36),
     PRIMARY KEY (activity_id, user_id),
     FOREIGN KEY (activity_id) REFERENCES Activity(activity_id),
     FOREIGN KEY (user_id) REFERENCES LibraryUser(user_id)
