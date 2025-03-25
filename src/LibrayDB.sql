@@ -36,8 +36,8 @@ CREATE TABLE LibraryUser (
 CREATE TABLE Borrows (
     user_id char(36),
     book_serial_number CHAR(36),
+    borrow_status ENUM('overdue','borrowed', 'available'),
     PRIMARY KEY (book_serial_number),
-    borrow_status ENUM('overdue','borrowed'),
     FOREIGN KEY (user_id) REFERENCES LibraryUser(user_id),
     FOREIGN KEY (book_serial_number) REFERENCES Book(book_serial_number)
 );
@@ -47,7 +47,7 @@ CREATE TABLE Activity (
     genre VARCHAR(255) NOT NULL,
     event_name VARCHAR(255),
     event_date DATE,
-    start_time DATE,
+    start_time TIME,
     FOREIGN KEY (genre) REFERENCES Section(genre)
 );
 
