@@ -1,6 +1,4 @@
-CREATE DATABASE LibraryDB;
-USE LibraryDB;
-DROP DATABASE Library;
+
 
 INSERT Section VALUES
 ("Romance"),
@@ -38,23 +36,21 @@ INSERT Book VALUES
 (DEFAULT,'Poetry', 8, 'Leaves of Grass', 'Walt Whitman'),
 (DEFAULT,'Thriller', 9, 'Gone Girl', 'Gillian Flynn');
 
-SELECT book_serial_number from Book WHERE title = "Romeo and Juliet";
-
 INSERT LibraryUser VALUES
-(DEFAULT,'Bacon','1992-04-18'),
-(DEFAULT, 'BubbyKing','2000-01-01'),
-(DEFAULT, 'Bjorki','2000-02-02'),
-(DEFAULT,'Squirrel Modeller','2000-03-03'),
-(DEFAULT,'Karl','2000-03-03'),
-(DEFAULT,'Jessica Taylor', '1987-09-18'),
-(DEFAULT,'Robert Anderson', '1993-06-25'),
-(DEFAULT,'Amanda Martinez', '1991-01-14'),
-(DEFAULT,'Christopher Lee', '1986-08-07'),
-(DEFAULT,'Elizabeth Clark', '1994-04-20');
+('00001','Bacon','1992-04-18'),
+('00002', 'BubbyKing','2000-01-01'),
+('00003', 'Bjorki','2000-02-02'),
+('00004','Squirrel Modeller','2000-03-03'),
+('00005','Karl','2000-03-03'),
+('00006','Jessica Taylor', '1987-09-18'),
+('00007','Robert Anderson', '1993-06-25'),
+('00008','Amanda Martinez', '1991-01-14'),
+('00009','Christopher Lee', '1986-08-07'),
+('00010','Elizabeth Clark', '1994-04-20');
 
 INSERT INTO Borrows VALUES
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Bacon'), (SELECT book_serial_number FROM Book WHERE title = 'Dune'), 'overdue'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'BubbyKing'), (SELECT book_serial_number FROM Book WHERE title = 'Murder on the Orient Express'), 'borrowed'),
+((SELECT user_id FROM LibraryUser WHERE user_name = 'BubbiKing'), (SELECT book_serial_number FROM Book WHERE title = 'Murder on the Orient Express'), 'borrowed'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Bjorki'), (SELECT book_serial_number FROM Book WHERE title = 'The Lord of the Rings'), 'available'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Squirrel Modeller'), (SELECT book_serial_number FROM Book WHERE title = 'Guns, Germs, and Steel'), 'available'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Karl'), (SELECT book_serial_number FROM Book WHERE title = 'Steve Jobs'), 'borrowed'),

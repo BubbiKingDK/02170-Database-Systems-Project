@@ -28,13 +28,13 @@ CREATE TABLE Book (
 );
 
 CREATE TABLE LibraryUser (
-    user_id char(36) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
+    user_id VARCHAR(5) NOT NULL PRIMARY KEY,
     user_name VARCHAR(255),
     date_of_birth DATE
 );
 
 CREATE TABLE Borrows (
-    user_id char(36),
+    user_id VARCHAR(5),
     book_serial_number CHAR(36),
     borrow_status ENUM('overdue','borrowed', 'available'),
     PRIMARY KEY (book_serial_number),
@@ -53,7 +53,7 @@ CREATE TABLE Activity (
 
 CREATE TABLE Attends (
     activity_id CHAR(36),
-    user_id CHAR(36),
+    user_id VARCHAR(5),
     PRIMARY KEY (activity_id, user_id),
     FOREIGN KEY (activity_id) REFERENCES Activity(activity_id),
     FOREIGN KEY (user_id) REFERENCES LibraryUser(user_id)
