@@ -1,3 +1,5 @@
+
+-- Query 1
 SELECT
 	Section.Genre,
     COUNT(DISTINCT activity_id) AS activity_count,
@@ -7,11 +9,13 @@ NATURAL LEFT JOIN Activity
 NATURAL LEFT JOIN Book
 GROUP BY Genre;
 
+-- Query 2
 SELECT book_serial_number, title, author
 FROM Book
 WHERE Genre = 'Science Fiction'
 AND book_serial_number NOT IN (SELECT book_serial_number FROM Borrows);
 
+-- Query 3
 SELECT user_id, user_name
 FROM LibraryUser 
 NATURAL JOIN Attends 
@@ -19,7 +23,7 @@ NATURAL JOIN Activity
 WHERE activity_name = 'Sci-Fi World Building Workshop'
 GROUP BY user_id, user_name;
 
-
+-- Trigger
 DROP TRIGGER IF EXISTS validate_user_age;
 DELIMITER //
 CREATE TRIGGER validate_user_age
@@ -34,7 +38,7 @@ BEGIN
 END //
 DELIMITER ;
 
-
+-- Function
 DROP FUNCTION IF EXISTS Availability;
 DELIMITER //
 CREATE FUNCTION Availability (vGenre VARCHAR(255)) RETURNS VARCHAR(255)
@@ -47,18 +51,19 @@ RETURN CONCAT(vBorrowCount,'/',vTotalCount);
 END//
 DELIMITER ;
 
+-- Function Test
 SELECT Genre, Availability(Genre) AS AvailableBooks FROM Section;
 
-
-
+-- Update
 SET SQL_SAFE_UPDATES = 0;
 UPDATE Activity SET start_time =
     CASE
         WHEN start_time <= '10:00:00' THEN '10:00'
         ELSE start_time
     END;
-
 SELECT* FROM Activity; 
+
+-- Procedure
 DROP PROCEDURE IF EXISTS borrowBook;
 DELIMITER //
 CREATE PROCEDURE borrowBook(userid CHAR(5), ptitle CHAR(255), pauthor CHAR(255))
@@ -75,6 +80,7 @@ CREATE PROCEDURE borrowBook(userid CHAR(5), ptitle CHAR(255), pauthor CHAR(255))
     END //
 DELIMITER ;
 
+-- Procedure Test
 CALL borrowBook('00001', 'Dune', 'Frank Herbert');
 SELECT b.book_serial_number, br.borrow_status
 FROM Book b
@@ -82,6 +88,7 @@ JOIN Borrows br ON b.book_serial_number = br.book_serial_number
 WHERE b.title = 'Dune'
 AND br.user_id = '00001';
 
+-- Delete
 DELETE FROM Borrows
 WHERE book_serial_number IN (
     SELECT b.book_serial_number
