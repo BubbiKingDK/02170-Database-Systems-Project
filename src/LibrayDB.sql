@@ -45,8 +45,8 @@ CREATE TABLE Borrows (
 CREATE TABLE Activity (
     activity_id CHAR(36) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
     genre VARCHAR(255) NOT NULL,
-    event_name VARCHAR(255),
-    event_date DATE,
+    activity_name VARCHAR(255),
+    activity_date DATE,
     start_time TIME,
     FOREIGN KEY (genre) REFERENCES Section(genre)
 );

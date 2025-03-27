@@ -71,16 +71,16 @@ INSERT Activity VALUES
 (DEFAULT,'Thriller', 'Suspense and Mystery Panel', '2025-04-24', '18:30');
 
 INSERT Attends VALUES
-((SELECT activity_id FROM Activity WHERE event_name = 'Sci-Fi World Building Workshop'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Bacon')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Crime Novel Discussion'), (SELECT user_id FROM LibraryUser WHERE user_name = 'BubbiKing')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Epic Fantasy Reading Group'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Bjorki')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Historical Perspectives Lecture'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Squirrel Modeller')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Life Stories Book Club'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Karl')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Scientific Discoveries Symposium'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Jessica Taylor')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Philosophical Thinking Roundtable'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Robert Anderson')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Poetry Reading Night'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Amanda Martinez')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Suspense and Mystery Panel'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Christopher Lee')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Summer reads'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Elizabeth Clark'));
+((SELECT activity_id FROM Activity WHERE activity_name = 'Sci-Fi World Building Workshop'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Bacon')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Crime Novel Discussion'), (SELECT user_id FROM LibraryUser WHERE user_name = 'BubbiKing')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Epic Fantasy Reading Group'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Bjorki')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Historical Perspectives Lecture'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Squirrel Modeller')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Life Stories Book Club'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Karl')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Scientific Discoveries Symposium'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Jessica Taylor')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Philosophical Thinking Roundtable'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Robert Anderson')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Poetry Reading Night'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Amanda Martinez')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Suspense and Mystery Panel'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Christopher Lee')),
+((SELECT activity_id FROM Activity WHERE activity_name = 'Summer reads'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Elizabeth Clark'));
 
 
 SELECT * FROM Section;
