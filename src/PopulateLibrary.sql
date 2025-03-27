@@ -57,7 +57,7 @@ INSERT INTO Borrows VALUES
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Jessica Taylor'), (SELECT book_serial_number FROM Book WHERE title = 'A Brief History of Time'), 'borrowed'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Robert Anderson'), (SELECT book_serial_number FROM Book WHERE title = 'Meditations'), 'available'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Amanda Martinez'), (SELECT book_serial_number FROM Book WHERE title = 'Leaves of Grass'), 'overdue'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Christopher Lee'), (SELECT book_serial_number FROM Book WHERE title = 'Gone Girl'), 'available'),
+((SELECT user_id FROM LibraryUser WHERE user_name = 'Christopher Lee'), (SELECT book_serial_number FROM Book WHERE title = 'Twisted Love'), 'available'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Elizabeth Clark'), (SELECT book_serial_number FROM Book WHERE title = 'Romeo and Juliet'), 'overdue');
 
 INSERT Activity VALUES
