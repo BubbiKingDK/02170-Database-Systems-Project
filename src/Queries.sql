@@ -18,3 +18,17 @@ NATURAL JOIN Attends
 NATURAL JOIN Activity
 WHERE activity_name = 'Sci-Fi World Building Workshop'
 GROUP BY user_id, user_name;
+
+DROP FUNCTION IF EXISTS Availability;
+DELIMITER //
+CREATE FUNCTION Availability (vGenre VARCHAR(255)) RETURNS VARCHAR(255)
+BEGIN
+DECLARE vTotalCount INT;
+DECLARE vBorrowCount INT;
+SELECT COUNT(*) INTO vTotalCount FROM BOOK WHERE Genre = vGenre;
+SELECT COUNT(*) INTO vBorrowCount FROM BOOK WHERE Genre = vGenre AND book_serial_number NOT IN (SELECT book_serial_number FROM Borrows);
+RETURN CONCAT(vBorrowCount,'/',vTotalCount);
+END//
+DELIMITER ;
+
+SELECT Genre, Availability(Genre) AS AvailableBooks FROM Section;
