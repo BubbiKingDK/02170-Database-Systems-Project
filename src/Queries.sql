@@ -32,3 +32,14 @@ END//
 DELIMITER ;
 
 SELECT Genre, Availability(Genre) AS AvailableBooks FROM Section;
+
+
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Activity SET start_time =
+    CASE
+        WHEN start_time <= '10:00:00' THEN '10:00'
+        ELSE start_time
+    END;
+
+SELECT* FROM Activity; 
