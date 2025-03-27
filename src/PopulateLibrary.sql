@@ -34,7 +34,7 @@ INSERT Book VALUES
 (DEFAULT,'Science', 6, 'A Brief History of Time', 'Stephen Hawking'),
 (DEFAULT,'Philosophy', 7, 'Meditations', 'Marcus Aurelius'),
 (DEFAULT,'Poetry', 8, 'Leaves of Grass', 'Walt Whitman'),
-(DEFAULT,'Thriller', 9, 'Gone Girl', 'Gillian Flynn');
+(DEFAULT,'Romance', 9, 'Twisted Love', 'Ana Huang');
 
 INSERT LibraryUser VALUES
 ('00001','Bacon','1992-04-18'),
@@ -89,6 +89,7 @@ INSERT Attends VALUES
 SELECT * FROM Section;
 SELECT * FROM Bookshelf;
 SELECT * FROM Book;
+DESCRIBE BOOK;
 SELECT * FROM LibraryUser;
 SELECT * FROM Borrows;
 SELECT * FROM Activity;
