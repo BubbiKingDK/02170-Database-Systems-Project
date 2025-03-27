@@ -36,7 +36,7 @@ CREATE TABLE LibraryUser (
 CREATE TABLE Borrows (
     user_id VARCHAR(5),
     book_serial_number CHAR(36),
-    borrow_status ENUM('overdue','borrowed', 'available'),
+    borrow_status ENUM('overdue','borrowed'),
     PRIMARY KEY (book_serial_number),
     FOREIGN KEY (user_id) REFERENCES LibraryUser(user_id),
     FOREIGN KEY (book_serial_number) REFERENCES Book(book_serial_number)

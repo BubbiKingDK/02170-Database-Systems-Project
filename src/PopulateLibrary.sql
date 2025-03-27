@@ -49,13 +49,13 @@ INSERT LibraryUser VALUES
 INSERT INTO Borrows VALUES
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Bacon'), (SELECT book_serial_number FROM Book WHERE title = 'Dune'), 'overdue'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'BubbiKing'), (SELECT book_serial_number FROM Book WHERE title = 'Murder on the Orient Express'), 'borrowed'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Bjorki'), (SELECT book_serial_number FROM Book WHERE title = 'The Lord of the Rings'), 'available'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Squirrel Modeller'), (SELECT book_serial_number FROM Book WHERE title = 'Guns, Germs, and Steel'), 'available'),
+((SELECT user_id FROM LibraryUser WHERE user_name = 'Bjorki'), (SELECT book_serial_number FROM Book WHERE title = 'The Lord of the Rings'), 'borrowed'),
+((SELECT user_id FROM LibraryUser WHERE user_name = 'Squirrel Modeller'), (SELECT book_serial_number FROM Book WHERE title = 'Guns, Germs, and Steel'), 'borrowed'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Karl'), (SELECT book_serial_number FROM Book WHERE title = 'Steve Jobs'), 'borrowed'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Jessica Taylor'), (SELECT book_serial_number FROM Book WHERE title = 'A Brief History of Time'), 'borrowed'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Robert Anderson'), (SELECT book_serial_number FROM Book WHERE title = 'Meditations'), 'available'),
+((SELECT user_id FROM LibraryUser WHERE user_name = 'Robert Anderson'), (SELECT book_serial_number FROM Book WHERE title = 'Meditations'), 'overdue'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Amanda Martinez'), (SELECT book_serial_number FROM Book WHERE title = 'Leaves of Grass'), 'overdue'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Christopher Lee'), (SELECT book_serial_number FROM Book WHERE title = 'Twisted Love'), 'available'),
+((SELECT user_id FROM LibraryUser WHERE user_name = 'Christopher Lee'), (SELECT book_serial_number FROM Book WHERE title = 'Twisted Love'), 'overdue'),
 ((SELECT user_id FROM LibraryUser WHERE user_name = 'Elizabeth Clark'), (SELECT book_serial_number FROM Book WHERE title = 'Romeo and Juliet'), 'overdue');
 
 INSERT Activity VALUES
