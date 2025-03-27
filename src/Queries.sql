@@ -18,3 +18,16 @@ NATURAL JOIN Attends
 NATURAL JOIN Activity
 WHERE activity_name = 'Sci-Fi World Building Workshop'
 GROUP BY user_id, user_name;
+
+DELIMITER //
+CREATE TRIGGER validate_user_age
+BEFORE INSERT ON LibraryUser
+FOR EACH ROW
+BEGIN
+    IF TIMESTAMPDIFF(YEAR, NEW.date_of_birth, CURDATE()) < 10 THEN
+        SIGNAL SQLSTATE 'HY000'
+        SET MYSQL_ERRNO = 1525,
+        MESSAGE_TEXT = 'User must be at least 10 years old';
+    END IF;
+END //
+DELIMITER ;
