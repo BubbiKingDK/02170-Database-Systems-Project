@@ -5,7 +5,6 @@ INSERT Section VALUES
 ('Fantasy'),
 ('History'),
 ('Biography'),
-('Science'),
 ('Philosophy'),
 ('Poetry'),
 ('Thriller');
@@ -22,23 +21,22 @@ INSERT Bookshelf VALUES
 (1, 'History'),
 (0, 'Biography'),
 (1, 'Biography'),
-(0, 'Science'),
 (0, 'Philosophy'),
 (1, 'Philosophy'),
 (0, 'Thriller');
 
 INSERT Book VALUES
-(DEFAULT, "Romance", 0, 'Romeo and Juliet', 'William Shakespeare'),
+(DEFAULT, 'Romance', 0, 'Romeo and Juliet', 'William Shakespeare'),
 (DEFAULT,'Science Fiction', 1, 'Dune', 'Frank Herbert'),
-(DEFAULT,'Science', 10, '1984', 'George Orwell'),
-(DEFAULT,'Science', 11, 'Fagre nye verden', 'Aldous Huxley'),
-(DEFAULT,'Mystery', 2, 'Murder on the Orient Express', 'Agatha Christie'),
-(DEFAULT,'Fantasy', 3, 'The Lord of the Rings', 'J.R.R. Tolkien'),
-(DEFAULT,'Fantasy', 12, 'Twilight', 'Stephenie Meyer'),
-(DEFAULT,'History', 4, 'Guns, Germs, and Steel', 'Jared Diamond'),
-(DEFAULT,'Biography', 5, 'Steve Jobs', 'Walter Isaacson'),
-(DEFAULT,'Science', 6, 'A Brief History of Time', 'Stephen Hawking'),
-(DEFAULT,'Romance', 9, 'Twisted Love', 'Ana Huang');
+(DEFAULT,'Science Fiction', 0, '1984', 'George Orwell'),
+(DEFAULT,'Science Fiction', 1, 'Fagre nye verden', 'Aldous Huxley'),
+(DEFAULT,'Mystery', 1, 'Murder on the Orient Express', 'Agatha Christie'),
+(DEFAULT,'Fantasy', 0, 'The Lord of the Rings', 'J.R.R. Tolkien'),
+(DEFAULT,'Fantasy', 0, 'Twilight', 'Stephenie Meyer'),
+(DEFAULT,'History', 1, 'Guns, Germs, and Steel', 'Jared Diamond'),
+(DEFAULT,'Biography', 1, 'Steve Jobs', 'Walter Isaacson'),
+(DEFAULT,'Science Fiction', 2, 'A Brief History of Time', 'Stephen Hawking'),
+(DEFAULT,'Romance', 0, 'Twisted Love', 'Ana Huang');
 
 INSERT LibraryUser VALUES
 ('00001','Weihao','1992-04-18'),
@@ -53,15 +51,14 @@ INSERT LibraryUser VALUES
 ('00010','Elizabeth Clark', '1994-04-20');
 
 INSERT INTO Borrows VALUES
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Weihao'), (SELECT book_serial_number FROM Book WHERE title = 'Dune'), 'overdue'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Benjamin'), (SELECT book_serial_number FROM Book WHERE title = 'Murder on the Orient Express'), 'borrowed'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Bjarke'), (SELECT book_serial_number FROM Book WHERE title = 'The Lord of the Rings'), 'borrowed'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'William'), (SELECT book_serial_number FROM Book WHERE title = 'Guns, Germs, and Steel'), 'borrowed'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Karl'), (SELECT book_serial_number FROM Book WHERE title = 'Steve Jobs'), 'borrowed'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Jessica Taylor'), (SELECT book_serial_number FROM Book WHERE title = 'A Brief History of Time'), 'borrowed'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Karl'), (SELECT book_serial_number FROM Book WHERE title = 'Leaves of Grass'), 'overdue'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Weihao'), (SELECT book_serial_number FROM Book WHERE title = 'Twisted Love'), 'overdue'),
-((SELECT user_id FROM LibraryUser WHERE user_name = 'Weihao'), (SELECT book_serial_number FROM Book WHERE title = 'Romeo and Juliet'), 'overdue');
+('00001', (SELECT book_serial_number FROM Book WHERE title = 'Dune'), 'overdue'),
+('00002', (SELECT book_serial_number FROM Book WHERE title = 'Murder on the Orient Express'), 'borrowed'),
+('00003', (SELECT book_serial_number FROM Book WHERE title = 'The Lord of the Rings'), 'borrowed'),
+('00004', (SELECT book_serial_number FROM Book WHERE title = 'Guns, Germs, and Steel'), 'borrowed'),
+('00004', (SELECT book_serial_number FROM Book WHERE title = 'Steve Jobs'), 'borrowed'),
+('00004', (SELECT book_serial_number FROM Book WHERE title = 'A Brief History of Time'), 'borrowed'),
+('00001', (SELECT book_serial_number FROM Book WHERE title = 'Twisted Love'), 'overdue'),
+('00001', (SELECT book_serial_number FROM Book WHERE title = 'Romeo and Juliet'), 'overdue');
 
 INSERT Activity VALUES
 (DEFAULT,'Romance','Summer reads','2025-03-25','8:00'),
