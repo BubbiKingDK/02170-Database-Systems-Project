@@ -1,5 +1,3 @@
-
-
 INSERT Section VALUES
 ("Romance"),
 ('Science Fiction'),
@@ -38,7 +36,7 @@ INSERT Book VALUES
 
 INSERT LibraryUser VALUES
 ('00001','Bacon','1992-04-18'),
-('00002', 'BubbyKing','2000-01-01'),
+('00002', 'BubbiKing','2000-01-01'),
 ('00003', 'Bjorki','2000-02-02'),
 ('00004','Squirrel Modeller','2000-03-03'),
 ('00005','Karl','2000-03-03'),
@@ -72,10 +70,9 @@ INSERT Activity VALUES
 (DEFAULT,'Poetry', 'Poetry Reading Night', '2025-04-23', '20:00'),
 (DEFAULT,'Thriller', 'Suspense and Mystery Panel', '2025-04-24', '18:30');
 
-
 INSERT Attends VALUES
 ((SELECT activity_id FROM Activity WHERE event_name = 'Sci-Fi World Building Workshop'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Bacon')),
-((SELECT activity_id FROM Activity WHERE event_name = 'Crime Novel Discussion'), (SELECT user_id FROM LibraryUser WHERE user_name = 'BubbyKing')),
+((SELECT activity_id FROM Activity WHERE event_name = 'Crime Novel Discussion'), (SELECT user_id FROM LibraryUser WHERE user_name = 'BubbiKing')),
 ((SELECT activity_id FROM Activity WHERE event_name = 'Epic Fantasy Reading Group'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Bjorki')),
 ((SELECT activity_id FROM Activity WHERE event_name = 'Historical Perspectives Lecture'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Squirrel Modeller')),
 ((SELECT activity_id FROM Activity WHERE event_name = 'Life Stories Book Club'), (SELECT user_id FROM LibraryUser WHERE user_name = 'Karl')),
@@ -89,7 +86,6 @@ INSERT Attends VALUES
 SELECT * FROM Section;
 SELECT * FROM Bookshelf;
 SELECT * FROM Book;
-DESCRIBE BOOK;
 SELECT * FROM LibraryUser;
 SELECT * FROM Borrows;
 SELECT * FROM Activity;
