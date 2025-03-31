@@ -23,7 +23,7 @@ CREATE TABLE Bookshelf (
 
 CREATE TABLE Book (
     book_serial_number CHAR(36) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
-    genre VARCHAR(255),
+    genre VARCHAR(255) NOT NULL,
     bookshelf_id INT,
     title VARCHAR(255),
     author VARCHAR(255),
@@ -48,7 +48,7 @@ CREATE TABLE Borrows (
 
 CREATE TABLE Activity (
     activity_id CHAR(36) DEFAULT (uuid()) NOT NULL PRIMARY KEY,
-    genre VARCHAR(255) NOT NULL,
+    genre VARCHAR(255),
     activity_name VARCHAR(255),
     activity_date DATE,
     start_time TIME,
