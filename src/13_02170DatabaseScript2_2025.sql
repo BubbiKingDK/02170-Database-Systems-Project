@@ -38,6 +38,8 @@ BEGIN
 END //
 DELIMITER ;
 
+
+
 -- Function
 DROP FUNCTION IF EXISTS Availability;
 DELIMITER //
@@ -82,7 +84,7 @@ DELIMITER ;
 
 -- Procedure Test
 CALL borrowBook('00001', 'Dune', 'Frank Herbert');
-SELECT b.book_serial_number, br.borrow_status
+SELECT br.user_id, b.book_serial_number, br.borrow_status
 FROM Book b
 JOIN Borrows br ON b.book_serial_number = br.book_serial_number
 WHERE b.title = 'Dune'
