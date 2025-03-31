@@ -8,7 +8,7 @@ FROM Section
 NATURAL LEFT JOIN Activity
 NATURAL LEFT JOIN Book
 GROUP BY Genre;
-
+SELECT * FROM Book;
 -- Query 2
 SELECT book_serial_number, title, author
 FROM Book
@@ -38,7 +38,7 @@ BEGIN
 END //
 DELIMITER ;
 
-
+-- (commented out since it results in an error) INSERT INTO libraryUser (user_id, user_name, date_of_birth) VALUES (00011, 'Peter Hansen', '2019-05-13');
 
 -- Function
 DROP FUNCTION IF EXISTS Availability;
@@ -89,6 +89,8 @@ FROM Book b
 JOIN Borrows br ON b.book_serial_number = br.book_serial_number
 WHERE b.title = 'Dune'
 AND br.user_id = '00001';
+
+
 
 -- Delete
 DELETE FROM Borrows
